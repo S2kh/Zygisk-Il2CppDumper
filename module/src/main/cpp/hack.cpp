@@ -16,18 +16,27 @@
 #include <sys/mman.h>
 #include <linux/unistd.h>
 #include <array>
+#include <cstdlib>
+#include <ctime>
 
 void hack_start(const char *game_data_dir) {
+    // Random delay 15-25 seconds to avoid timing detection
+    srand(time(nullptr));
+    int delay = 15 + (rand() % 11);
+    sleep(delay);
+    
     bool load = false;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 30; i++) {
         void *handle = xdl_open("libil2cpp.so", 0);
         if (handle) {
             load = true;
+            // Additional delay to let game fully initialize
+            sleep(5);
             il2cpp_api_init(handle);
             il2cpp_dump(game_data_dir);
             break;
         } else {
-            sleep(1);
+            sleep(2);
         }
     }
     if (!load) {

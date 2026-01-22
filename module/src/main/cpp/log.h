@@ -7,10 +7,11 @@
 
 #include <android/log.h>
 
-#define LOG_TAG "Perfare"
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define LOGW(...) __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+// Logging disabled for stealth
+#define LOG_TAG "x"
+#define LOGD(...) do {} while(0)
+#define LOGW(...) do {} while(0)
+#define LOGE(...) do {} while(0)
+#define LOGI(...) do {} while(0)
 
 #endif //ZYGISK_IL2CPPDUMPER_LOG_H
